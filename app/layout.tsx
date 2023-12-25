@@ -1,4 +1,5 @@
 import QueryProvider from "@/context/QueryProvider";
+import ToasterProvider from "@/context/ToasterProvider";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -14,7 +15,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="en">
 			<body className={inter.className}>
-				<QueryProvider>{children}</QueryProvider>
+				<QueryProvider>
+					<ToasterProvider></ToasterProvider>
+					{children}
+				</QueryProvider>
 			</body>
 		</html>
 	);

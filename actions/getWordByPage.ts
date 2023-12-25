@@ -1,18 +1,18 @@
 import { apiUrl } from "@/constants";
 import { Word } from "@/interface";
 
-export const getWordByPage = async (
-	page: number = 0
+export const getWordByPageAndType = async (
+	page: number = 0,
+	type: string = "ALL"
 ): Promise<{
 	posts: Word[];
 	total: number;
 }> => {
-	const res = await fetch(`${apiUrl}/word?page=${page}`);
+	const res = await fetch(`${apiUrl}/word?page=${page}&type=${type}`);
 
-	const result = await res.json().then((data) => {
+	let result = await res.json().then((data) => {
 		return data;
 	});
-	console.log(result);
 
 	return result;
 };
