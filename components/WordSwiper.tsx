@@ -27,7 +27,7 @@ function WordSwiper() {
 
 	const { data, isLoading } = useQuery({
 		queryFn: () => getWordByPageAndType(page, type),
-		queryKey: ["word", { page, type }],
+		queryKey: ["word", { page, type, isOpen }],
 	});
 
 	const items: MenuProps["items"] = [
@@ -121,7 +121,7 @@ function WordSwiper() {
 						}}
 					/>
 				)}
-				{data?.posts.length !== 0 && (
+				{!isLoading && data?.posts.length !== 0 && (
 					<div className="flex justify-center mt-4">
 						<Pagi defaultCurrent={page + 1} total={data?.total} pageSize={10} onChange={(page) => setPage(page - 1)} />
 					</div>
